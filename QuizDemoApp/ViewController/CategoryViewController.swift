@@ -29,6 +29,7 @@ class CategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.txtCategory.text = ""
         self.txtMode.text = ""
+        self.vmCategory.correctAnswers = 0
     }
     //MARK: functions
     func initView() {
@@ -90,8 +91,12 @@ class CategoryViewController: UIViewController {
 
     //MARK: button click
     @IBAction func btnSelectClick(_ sender: Any) {
-        let param: [String: Any] = ["amount":10,"category":self.selectedCat,"difficulty":self.txtMode.text!.lowercased(),"type":"multiple"]
-        self.vmCategory.getQuestionList(param: param)
+        if self.txtCategory.text == "" || self.txtMode.text == "" {
+            Common.shared.showAlert(message: "Please select your quiz", vc: self)
+        } else {
+            let param: [String: Any] = ["amount":10,"category":self.selectedCat,"difficulty":self.txtMode.text!.lowercased(),"type":"multiple"]
+            self.vmCategory.getQuestionList(param: param)
+        }
     }
     
     /*
