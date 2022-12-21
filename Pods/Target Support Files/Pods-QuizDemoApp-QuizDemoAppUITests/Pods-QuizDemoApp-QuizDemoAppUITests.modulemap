@@ -1,0 +1,6 @@
+framework module Pods_QuizDemoApp_QuizDemoAppUITests {
+  umbrella header "Pods-QuizDemoApp-QuizDemoAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
